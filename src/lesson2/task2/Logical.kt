@@ -45,7 +45,17 @@ fun daysInMonth(month: Int, year: Int): Int = TODO()
  * Вернуть true, если утверждение верно
  */
 fun circleInside(x1: Double, y1: Double, r1: Double,
-                 x2: Double, y2: Double, r2: Double): Boolean = TODO()
+                 x2: Double, y2: Double, r2: Double): Boolean {
+
+    if(r2 < r1)
+    {
+        return false
+    }
+
+    return (sqr(x2 - x1) + sqr(y2 - y1) <= sqr(r2-r1))
+
+
+}
 
 /**
  * Средняя
@@ -56,4 +66,55 @@ fun circleInside(x1: Double, y1: Double, r1: Double,
  * кирпич 4 х 4 х 4 пройдёт через отверстие 4 х 4.
  * Вернуть true, если кирпич пройдёт
  */
-fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean = TODO()
+fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
+
+    // ab
+    if((a <= r) &&  (b <=s))
+    {
+        return true
+    }
+
+    // ba
+    if((b <= r) &&  (a <=s))
+    {
+        return true
+    }
+    // ac
+    if((a <= r) &&  (c <=s))
+    {
+        return true
+    }
+    // ac
+    if((s >= a) && (c <= r))
+    {
+        return true
+    }
+    // abc
+    if((a == b) && (c == r) && (r == s))
+    {
+        return true
+    }
+    //
+    if((r < a) && (c < b) && (b < a) && (a ==s))
+    {
+        return false
+    }
+    // ca
+    if((c <= r) &&  (a <=s))
+    {
+        return true
+    }
+    // bc
+    if((b <= r) &&  (c <=s))
+    {
+        return true
+    }
+    // cb
+    if((c <= r) &&  (b <=s))
+    {
+        return true
+    }
+
+    return false
+
+}
